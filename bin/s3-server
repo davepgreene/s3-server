@@ -2,11 +2,10 @@
 'use strict';
 
 const yargs = require('yargs');
-const appRoot = require('app-root-path');
-const configLoader = require(`${appRoot}/lib/config`);
-const logLoader = require(`${appRoot}/lib/log`);
-const Utils = require(`${appRoot}/lib/utils`);
-const Bootstrap = require(`${appRoot}/lib/bootstrap`);
+const configLoader = require('../lib/config');
+const logLoader = require('../lib/log');
+const Utils = require('../lib/utils');
+const Bootstrap = require('../lib/bootstrap');
 
 const configOption = {
   type: 'string',
