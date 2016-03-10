@@ -1,6 +1,6 @@
 # S3 Dev Server
 
-[![npm version](https://badge.fury.io/js/s3-server.svg)](https://badge.fury.io/js/s3-server)
+[![npm version](https://badge.fury.io/js/dev-s3-server.svg)](https://badge.fury.io/js/dev-s3-server)
 [![Dependency Status](https://david-dm.org/davepgreene/s3-server.svg)](https://david-dm.org/davepgreene/s3-server)
 
 ## Installation
