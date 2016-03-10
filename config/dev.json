@@ -1,0 +1,9 @@
+{
+  "log": {
+    "level": "debug"
+  },
+  "hostname": "127.0.0.1",
+  "port": 4569,
+  "directory": "../data",
+  "bucket": "test-bucket"
+}

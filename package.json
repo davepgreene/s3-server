@@ -1,0 +1,45 @@
+{
+  "name": "s3-server",
+  "version": "1.0.0",
+  "description": "A dummy S3 server that you can run locally.",
+  "main": "./index",
+  "scripts": {
+    "lint": "eslint bin/** lib/**",
+    "start": "./bin/s3-server -c ./config/dev.json"
+  },
+  "bin": {
+    "s3-server": "./bin/s3-server"
+  },
+  "author": "Dave Greene <davepgreene@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "S3",
+    "AWS",
+    "dev",
+    "server"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepgreene/s3-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davepgreene/s3-server/issues"
+  },
+  "homepage": "https://github.com/davepgreene/s3-server#readme",
+  "devDependencies": {
+    "eslint": "^2.3.0",
+    "eslint-config-airbnb": "^6.1.0",
+    "eslint-plugin-react": "^4.2.0"
+  },
+  "dependencies": {
+    "app-root-path": "^1.0.0",
+    "aws-sdk": "^2.2.41",
+    "chokidar": "^1.4.3",
+    "convict": "^1.1.2",
+    "fs-extra": "^0.26.5",
+    "s3rver": "0.0.13",
+    "walk": "^2.3.9",
+    "winston": "^2.2.0",
+    "yargs": "^4.2.0"
+  }
+}

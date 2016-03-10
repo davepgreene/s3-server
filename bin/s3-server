@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+'use strict';
+
+const yargs = require('yargs');
+const appRoot = require('app-root-path');
+const configLoader = require(`${appRoot}/lib/config`);
+const logLoader = require(`${appRoot}/lib/log`);
+const Utils = require(`${appRoot}/lib/utils`);
+const Bootstrap = require(`${appRoot}/lib/bootstrap`);
+
+const configOption = {
+  type: 'string',
+  alias: 'config',
+  describe: 'Load a config file from the filesystem. This supersedes all other settings'
+};
+
+const dataOption = {
+  type: 'string',
+  alias: 'data',
+  describe: 'Load data directory from filesystem'
+};
+
+const hostOption = {
+  alias: 'hostname',
+  describe: 'The hostname or ip for the server',
+  type: 'string'
+};
+
+const portOption = {
+  alias: 'port',
+  describe: 'The port number of the http server',
+  type: 'number'
+};
+
+const bucketOption = {
+  alias: 'bucket',
+  describe: 'The bucket name (if unspecified, defaults to the name of the data folder)',
+  type: 'string'
+};
+
+const args = yargs
+  .usage('Usage: $0 [args]')
+  .option('c', configOption)
+  .option('d', dataOption)
+  .option('h', hostOption)
+  .option('p', portOption)
+  .option('b', bucketOption)
+  .help('help')
+  .argv;
+
+const Config = configLoader(args);
+const Log = logLoader(Config);
+
+new Bootstrap(Config, Log).init();
+
+/**
+ * Exit handlers
+ */
+
+// catches ctrl+c event
+process.on('SIGINT', () => process.exit(0));
+
+// do something when app is closing
+process.on('exit', (code) => {
+  const tmpDir = Config.has('tmpDir') ? Config.get('tmpDir') : null;
+
+  Utils.exitHandler(Log, tmpDir, code);
+});
+
+// catches uncaught exceptions
+process.on('uncaughtException', (err) => {
+  const tmpDir = Config.has('tmpDir') ? Config.get('tmpDir') : null;
+
+  Log.error(err, err.stack);
+  Utils.exitHandler(Log, tmpDir, 1);
+});
