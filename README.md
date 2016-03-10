@@ -30,6 +30,8 @@ Options:
   --help          Show help                                            [boolean]
 ```
 
+A demo config file is located in the `config` folder. The `dev.json` file points to the `data` directory which contains some sample data.
+
 ## TODO
 * Tests! Tests! Tests!
 * Add ability to use programmatically
